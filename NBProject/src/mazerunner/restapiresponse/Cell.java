@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mazerunner.restapiresponse;
 
-/**
+/** The representation of a maze cell.
  *
  * @author kismoha
  */
-public class Cell implements Cloneable {
+public class Cell {
 
     private boolean previouslyVisited;
     private boolean atEnd;
@@ -30,6 +25,10 @@ public class Cell implements Cloneable {
                 + mazeGuid + ", note=" + note + ", y=" + y + ", x=" + x + '}';
     }
 
+    /** Check if the cell is a dead end
+     *
+     * @return returns true if it is a dead end, false otherwise.
+     */
     public boolean isDeadEnd() {
         return !east.equals(CellAvailability.UNEXPLORED)
                 && !west.equals(CellAvailability.UNEXPLORED)
@@ -37,6 +36,11 @@ public class Cell implements Cloneable {
                 && !south.equals(CellAvailability.UNEXPLORED);
     }
 
+    /** Checks in what direction should be the next cell.
+     *  Priority: SOUTH > EAST > WEST > NORTH.
+     * 
+     * @return returns a direction.
+     */
     public String nextCell() {
         return south.equals(CellAvailability.UNEXPLORED) ? "SOUTH"
                 : east.equals(CellAvailability.UNEXPLORED) ? "EAST"
@@ -45,35 +49,67 @@ public class Cell implements Cloneable {
 
     }
     
+    /** Checks if the cell will be used later in the algorithm.
+     * A cell is useful if there are more than one unexplored cells
+     * neighbouring it.
+     * 
+     * @return returns true if it should be stored, false otherwise.
+     */
     public boolean shouldStore(){
         int counter = 0;
         if(south.equals(CellAvailability.UNEXPLORED)){counter++;}
         if(north.equals(CellAvailability.UNEXPLORED)){counter++;}
         if(west.equals(CellAvailability.UNEXPLORED)){counter++;}
         if(east.equals(CellAvailability.UNEXPLORED)){counter++;}
-        return counter > 1 ? true : false;
+        return counter > 1;
     }
 
+    /** Check if the cells are identical.
+     * Cells are identical if their coordinates match.
+     *
+     * @param obj The cell which it should be compared with.
+     * @return returns true if they identical, false otherwise.
+     */
     public boolean equals(Cell obj) {
         return obj.getX() == x && obj.getY() == y;
     }
-
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    
+    /** Formats the coordinates of the cell.
+     *
+     * @return returns a string of the cell's coordinates formatted.
+     */
+    public String toStringCoords(){
+        return " x: "+x+" y: "+y;
     }
 
+    /** Getter method for y field.
+     *
+     * @return returns the y field.
+     */
     public int getY() {
         return y;
     }
 
+    /** Getter method for x field.
+     *
+     * @return returns the x field.
+     */
     public int getX() {
         return x;
     }
 
+    /** Getter method for mazeGuid field.
+     *
+     * @return returns the mazeGuid field.
+     */
     public String getMazeGuid() {
         return mazeGuid;
     }
 
+    /** Getter method for atEnd field.
+     *
+     * @return returns the atEnd field.
+     */
     public boolean isAtEnd() {
         return atEnd;
     }

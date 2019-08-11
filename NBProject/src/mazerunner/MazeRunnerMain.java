@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mazerunner;
 
+import mazerunner.exceptions.HTTP400StatusException;
 import mazerunner.algorithm.StepBackAlgorithm;
 
-/**
+/** The main entry point of the program
  *
  * @author kismoha
  */
@@ -16,8 +12,12 @@ public class MazeRunnerMain {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws HTTP400StatusException, CloneNotSupportedException{
-        new StepBackAlgorithm().run();
+    public static void main(String[] args){
+        try {
+            new StepBackAlgorithm().run();
+        } catch (HTTP400StatusException ex) {
+            System.out.println("Error while communicating with the REST API");
+        }
     }
     
 }

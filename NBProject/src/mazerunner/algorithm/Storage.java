@@ -1,45 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mazerunner.algorithm;
 
 import java.util.Stack;
 import mazerunner.restapiresponse.Cell;
 
-/**
+/** Represents the storage for the algorithm
  *
  * @author kismoha
  */
 public class Storage {
 
-    private Stack<Cell> currentPath;
+    private final Stack<Cell> currentPath;
 
+    /**  Creates an empty stack for the data.
+     *
+     */
     public Storage() {
         currentPath = new Stack<>();
     }
 
+    /** Stores a cell on top of the stack.
+     *
+     * @param currentCell The cell which should be stored.
+     */
     public void store(Cell currentCell) {
         push(currentCell);
     }
 
-    //TO DO : implement no more moves
-    public Cell popUntilValidCell() {
-        do{
-            pop();
-        }while(peek().isDeadEnd());
-        return peek();
+    /** Removes the top cell from the stack.
+     *
+     * @return Returns the removed cell.
+     */
+    public Cell remove(){
+        return pop();
     }
     
+    // Pops from the stack.
     private Cell pop(){
         return currentPath.pop();
     }
-    
-    private Cell peek(){
-        return currentPath.peek();
-    }
 
+    // Pushes onto the stack.
     private void push(Cell item){
         currentPath.push(item);
     }

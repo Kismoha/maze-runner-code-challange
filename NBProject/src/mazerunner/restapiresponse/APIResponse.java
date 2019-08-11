@@ -1,18 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mazerunner.restapiresponse;
 
-/**
+/** The object representation of an API response.
  *
  * @author kismoha
  */
 public class APIResponse {
     
-    Cell currentCell;
+    private Cell currentCell;
 
+    /** Getter method for currentCell field.
+     *
+     * @return returns the currentCell field.
+     */
     public Cell getCurrentCell() {
         return currentCell;
     }
