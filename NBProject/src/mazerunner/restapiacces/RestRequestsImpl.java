@@ -87,7 +87,7 @@ public class RestRequestsImpl implements RestRequests {
     }
 
     @Override
-    public APIResponse currentCell(String mazeGuid) {
+    public  APIResponse currentCell(String mazeGuid) {
         //Building the method, and the URI
         try (CloseableHttpClient client = HttpClients.createDefault();) {
             URIBuilder uri = new URIBuilder(BASE_URL + "/api/currentCell");

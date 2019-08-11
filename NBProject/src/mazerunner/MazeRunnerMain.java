@@ -5,7 +5,7 @@
  */
 package mazerunner;
 
-import mazerunner.restapiacces.RestRequestsImpl;
+import mazerunner.algorithm.StepBackAlgorithm;
 
 /**
  *
@@ -16,13 +16,8 @@ public class MazeRunnerMain {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        try{
-            new RestRequestsImpl().initMaze();
-        }catch(HTTP400StatusException e){
-            e.printStackTrace();
-        }
-        
+    public static void main(String[] args) throws HTTP400StatusException, CloneNotSupportedException{
+        new StepBackAlgorithm().run();
     }
     
 }

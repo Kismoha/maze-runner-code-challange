@@ -7,15 +7,13 @@ package mazerunner.restapiresponse;
 
 /**
  *
- * @author kismo
+ * @author kismoha
  */
 public class APIResponse {
     
-    CurrentCell currentCell;
+    Cell currentCell;
 
-    public CurrentCell getCurrentCell() {
+    public Cell getCurrentCell() {
         return currentCell;
     }
-    
-    
 }
