@@ -98,6 +98,8 @@ public class StepBackAlgorithm {
     // Chooses the next action for the algorithm based on the current cell.
     private void chooseNextAction() throws HTTP400StatusException {
         if (isSolved()) {
+            System.out.println("The last Cell:");
+            System.out.println(currentCell.toString());
             terminate();
         } else if (isCurrentCellDeadEnd()) {
             stepBack();
