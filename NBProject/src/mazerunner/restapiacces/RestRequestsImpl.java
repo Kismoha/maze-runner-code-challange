@@ -69,7 +69,7 @@ public class RestRequestsImpl implements RestRequests {
 
             return parseFromJson(json);
 
-        } catch (IOException | NullPointerException | URISyntaxException ex) {
+        } catch (IOException | URISyntaxException ex) {
             throw new HTTP400StatusException("Could not get the expected"
                     + "response from the REST API", ex);
         }
@@ -103,7 +103,7 @@ public class RestRequestsImpl implements RestRequests {
 
             return parseFromJson(json);
 
-        } catch (IOException | NullPointerException | URISyntaxException ex) {
+        } catch (IOException | URISyntaxException ex) {
             throw new HTTP400StatusException("Could not get the expected"
                     + "response from the REST API", ex);
         }
@@ -131,7 +131,7 @@ public class RestRequestsImpl implements RestRequests {
 
             return parseFromJson(json);
 
-        } catch (IOException | NullPointerException | URISyntaxException ex) {
+        } catch (IOException | URISyntaxException ex) {
             //TO DO
             return null;
         }
