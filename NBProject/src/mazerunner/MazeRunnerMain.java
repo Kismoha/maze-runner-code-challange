@@ -1,5 +1,6 @@
 package mazerunner;
 
+import java.io.IOException;
 import mazerunner.exceptions.HTTP400StatusException;
 import mazerunner.algorithm.StepBackAlgorithm;
 
@@ -15,8 +16,12 @@ public class MazeRunnerMain {
     public static void main(String[] args){
         try {
             new StepBackAlgorithm().run();
+            System.out.println("Press Enter to exit");
+            System.in.read();
         } catch (HTTP400StatusException ex) {
-            System.out.println("Error while communicating with the REST API");
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
     
