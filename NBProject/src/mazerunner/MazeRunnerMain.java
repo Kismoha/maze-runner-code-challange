@@ -18,9 +18,7 @@ public class MazeRunnerMain {
             new StepBackAlgorithm().run();
             System.out.println("Press Enter to exit");
             System.in.read();
-        } catch (HTTP400StatusException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
+        } catch (HTTP400StatusException | IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
