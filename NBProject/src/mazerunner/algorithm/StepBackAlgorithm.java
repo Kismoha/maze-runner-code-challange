@@ -6,6 +6,21 @@ import mazerunner.restapiresponse.Cell;
 
 /**
  * Represents the algorithm which is used to solve the problem.
+ * The algorithm has two basic action, stepping forward and stepping back.
+ * The basic logic is that the algorithm only uses back steps when the current
+ * cell is either a dead end or the paths leading out of it are all already
+ * visited. Otherwise the algorithm will step forward onto a non blocked and 
+ * not yet explored cell prioritizing south, east ,west and then north.
+ * The storage in a normal implementation of the algorithm would store the whole
+ * path from the starting cell to the current cell, but to reduce storage
+ * capacity and reduce the API requests, which are the most time consuming
+ * methods in the program, this implementation only stores the necessary cells.
+ * Cells that has multiple (mora than one) not blocked paths leading out of them
+ * and we have not yet visited them are considered necessary.
+ * The storage itself uses a stack logic. Therefore when we step back we use the
+ * cell which is on top of the stack, so the algorithm steps back to the nearest
+ * intersection which we have not yet fully explored. After fully exploring such
+ * cell, we delete it from the stack.
  *
  * @author kismoha
  */
